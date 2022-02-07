@@ -6,11 +6,11 @@ if [ $# -eq 1 ];then
     adb="adb -s ${1}"
 fi
 
-ScreenStatus=$($adb shell dumpsys power | grep 'Display Power' | cut -d'=' -f2)
 
 svc="$adb shell svc"
 while true;
 do 
+    ScreenStatus=$($adb shell dumpsys power | grep 'Display Power' | cut -d'=' -f2)
     case $ScreenStatus in
     'OFF') 
         $svc data disable
